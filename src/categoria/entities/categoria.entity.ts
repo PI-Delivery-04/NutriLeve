@@ -16,6 +16,6 @@ export class Categoria {
     @Column({ length: 1000, nullable: false })
     descricao: string;
 
-    @OneToMany(() => Encomenda, (encomenda) => encomenda.usuario)
+    @OneToMany(() => Encomenda, (encomenda) => encomenda.categoria)
     encomendas: Encomenda[];
 }
