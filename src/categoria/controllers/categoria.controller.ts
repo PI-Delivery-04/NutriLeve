@@ -2,50 +2,46 @@ import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPip
 import { CategoriaService } from "../services/categoria.service";
 import { Categoria } from "../entities/categoria.entity";
 
-
-
 @Controller("/categoria")
 export class CategoriaControlller {
-    constructor (private readonly categoriaService: CategoriaService) {}
+    constructor(private readonly categoriaService: CategoriaService) { }
 
-@Get()
-@HttpCode(HttpStatus.OK)
-findAll(): Promise<Categoria[]> {
-    return this.categoriaService.findAll();
-}
- 
-
-@Get("/:id")
-@HttpCode(HttpStatus.OK)
-findById(@Param("id", ParseIntPipe) id: number): Promise<Categoria> {
-    return this.categoriaService.findById(id);
-}
- 
-@Get("/descricao/:descricao")
-@HttpCode(HttpStatus.OK)
-findAllByDescricao(@Param("descricao") descricao: string): Promise<Categoria[]> {
-    return this.categoriaService.findAllByDescricao(descricao);
-}
+    @Get()
+    @HttpCode(HttpStatus.OK)
+    findAll(): Promise<Categoria[]> {
+        return this.categoriaService.findAll();
+    }
 
 
-@Post()
-@HttpCode(HttpStatus.CREATED)
-create(@Body() categoria: Categoria): Promise<Categoria> {
-    return this.categoriaService.create(categoria);
-}
+    @Get("/:id")
+    @HttpCode(HttpStatus.OK)
+    findById(@Param("id", ParseIntPipe) id: number): Promise<Categoria> {
+        return this.categoriaService.findById(id);
+    }
 
-@Put()
-@HttpCode(HttpStatus.OK)
-update(@Body() categoria: Categoria): Promise<Categoria> {
-    return this.categoriaService.update(categoria);
-}
+    @Get("/descricao/:descricao")
+    @HttpCode(HttpStatus.OK)
+    findAllByDescricao(@Param("descricao") descricao: string): Promise<Categoria[]> {
+        return this.categoriaService.findAllByDescricao(descricao);
+    }
 
 
-@Delete("/:id")
-@HttpCode(HttpStatus.NO_CONTENT)
-delete(@Param("id", ParseIntPipe) id: number) {
-    return this.categoriaService.delete(id);
-}
+    @Post()
+    @HttpCode(HttpStatus.CREATED)
+    create(@Body() categoria: Categoria): Promise<Categoria> {
+        return this.categoriaService.create(categoria);
+    }
 
+    @Put()
+    @HttpCode(HttpStatus.OK)
+    update(@Body() categoria: Categoria): Promise<Categoria> {
+        return this.categoriaService.update(categoria);
+    }
+
+    @Delete("/:id")
+    @HttpCode(HttpStatus.NO_CONTENT)
+    delete(@Param("id", ParseIntPipe) id: number) {
+        return this.categoriaService.delete(id);
+    }
 
 }

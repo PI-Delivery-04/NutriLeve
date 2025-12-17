@@ -2,7 +2,6 @@ import { IsNotEmpty } from "class-validator";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Usuario } from "../../usuario/entities/usuario.entity";
 
-
 @Entity({ name: 'tb_encomenda' })
 export class Encomenda {
 
@@ -32,14 +31,16 @@ export class Encomenda {
     @IsNotEmpty()
     @Column({ type: 'date', nullable: false })
     data: Date;
-   
 
-    @ManyToOne(() => Usuario, (usuario) => usuario.encomenda, {
-        onDelete: "CASCADE"
+    @ManyToOne(() => Usuario, (usuario) => usuario.encomendas, {
+        onDelete: 'CASCADE'
     })
-    usuario: Usuario
+    usuario: Usuario;
+
+    @ManyToOne(() => Categoria, (categoria) => categoria.encomendas, {
+        onDelete: 'CASCADE'
+    })
+    categoria: Categoria;
 
 
-
-    
 }
