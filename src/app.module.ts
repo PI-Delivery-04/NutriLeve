@@ -3,12 +3,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { Encomenda } from './encomenda/entities/encomenda.entity';
+import { EncomendaModule } from './encomenda/encomenda.module';
 
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-          isGlobal: true,
+      isGlobal: true,
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
@@ -17,12 +19,12 @@ import { ConfigModule } from '@nestjs/config';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [],
+      entities: [Encomenda],
       synchronize: true,
     }),
-
-],
+    EncomendaModule
+  ],
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule { }

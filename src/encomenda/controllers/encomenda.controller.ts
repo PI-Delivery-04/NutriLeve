@@ -1,0 +1,45 @@
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
+import { EncomendaService } from "../services/encomenda.service";
+import { Encomenda } from "../entities/encomenda.entity";
+import { DeleteResult } from "typeorm";
+
+@Controller('/encomendas')
+export class EncomendaController {
+    constructor(private readonly encomendaService: EncomendaService) { }
+
+    @Get()
+    @HttpCode(HttpStatus.OK)
+    async findAll(): Promise<Encomenda[]> {
+        return this.encomendaService.findAll();
+    }
+
+    @Get('/:id')
+    @HttpCode(HttpStatus.OK)
+    async findById(@Param('id', ParseIntPipe) id: number): Promise<Encomenda> {
+        return this.encomendaService.findById(id);
+    }
+
+    @Get('/nome/:nome')
+    @HttpCode(HttpStatus.OK)
+    async findAllByNome(@Param('nome') nome: string): Promise<Encomenda[]> {
+        return this.encomendaService.findAllByNome(nome);
+    }
+
+    @Post()
+    @HttpCode(HttpStatus.CREATED)
+    async create(@Body() encomenda: Encomenda): Promise<Encomenda> {
+        return this.encomendaService.create(encomenda);
+    }
+
+    @Put()
+    @HttpCode(HttpStatus.OK)
+    async update(@Body() encomenda: Encomenda): Promise<Encomenda> {
+        return this.encomendaService.update(encomenda);
+    }
+
+    @Delete('/:id')
+    @HttpCode(HttpStatus.NO_CONTENT)
+    async delete(@Param('id', ParseIntPipe) id: number) {
+        return this.encomendaService.delete(id);
+    }
+}
