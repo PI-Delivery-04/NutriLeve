@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { Encomenda } from './encomenda/entities/encomenda.entity';
 import { EncomendaModule } from './encomenda/encomenda.module';
+import { Categoria } from './categoria/entities/categoria.entity';
+import { CategoriaModule } from './categoria/categoria.module';
 
 
 @Module({
@@ -19,11 +19,11 @@ import { EncomendaModule } from './encomenda/encomenda.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [Encomenda],
+      entities: [Encomenda, Categoria],
       synchronize: true,
     }),
-    EncomendaModule
-  ],
+    EncomendaModule, CategoriaModule
+],
   controllers: [],
   providers: [],
 })
