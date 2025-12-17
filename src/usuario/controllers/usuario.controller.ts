@@ -30,7 +30,7 @@ export class UsuarioController {
     return this.usuarioService.findByNome(nome);
   }
 
-  @Post("/cadastrar")
+  @Post('/cadastrar')
   @HttpCode(HttpStatus.CREATED)
   create(@Body() usuario: Usuario): Promise<Usuario> {
     return this.usuarioService.create(usuario);
