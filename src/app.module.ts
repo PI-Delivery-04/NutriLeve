@@ -6,23 +6,25 @@ import { EncomendaModule } from './encomenda/encomenda.module';
 import { Categoria } from './categoria/entities/categoria.entity';
 import { CategoriaModule } from './categoria/categoria.module';
 import { Usuario } from './usuario/entities/usuario.entity';
+import { UsuarioModule } from './usuario/usuario.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true,}),
-      TypeOrmModule.forRoot({
-        type: 'mysql',
-        host: process.env.DB_HOST,
-        port: 3306,
-        username: process.env.DB_USERNAME,
-        password: process.env.DB_PASSWORD,
-        database: process.env.DB_NAME,
-        entities: [Encomenda, Categoria, Usuario],
-        synchronize: true,
-      }),
-      EncomendaModule, CategoriaModule
-    ],
+      isGlobal: true,
+    }),
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: process.env.DB_HOST,
+      port: 3306,
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
+      entities: [Encomenda, Categoria, Usuario],
+      synchronize: true,
+    }),
+    EncomendaModule, CategoriaModule, UsuarioModule
+  ],
   controllers: [],
   providers: [],
 })

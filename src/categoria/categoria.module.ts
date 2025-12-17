@@ -10,8 +10,8 @@ import { CategoriaControlller } from "./controllers/categoria.controller";
     imports: [TypeOrmModule.forFeature([Categoria])],
     providers: [CategoriaService],
     controllers: [CategoriaControlller],
-    exports: [],
+    exports: [CategoriaService],
 })
 
-export class CategoriaModule {}
+export class CategoriaModule { }
 
