@@ -6,6 +6,8 @@ import { EncomendaModule } from './encomenda/encomenda.module';
 import { Categoria } from './categoria/entities/categoria.entity';
 import { CategoriaModule } from './categoria/categoria.module';
 import { Usuario } from './usuario/entities/usuario.entity';
+import { AuthModule } from './auth/auth.module';
+import { UsuarioModule } from './usuario/usuario.module';
 
 @Module({
   imports: [
@@ -21,7 +23,7 @@ import { Usuario } from './usuario/entities/usuario.entity';
         entities: [Encomenda, Categoria, Usuario],
         synchronize: true,
       }),
-      EncomendaModule, CategoriaModule
+      EncomendaModule, CategoriaModule, AuthModule, UsuarioModule
     ],
   controllers: [],
   providers: [],
