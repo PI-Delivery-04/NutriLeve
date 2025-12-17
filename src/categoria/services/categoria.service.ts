@@ -11,11 +11,15 @@ export class CategoriaService {
     constructor(
         @InjectRepository(Categoria)
         private categoriaRepository: Repository<Categoria>
-    ) {}
+    ) { }
 
 
     async findAll(): Promise<Categoria[]> {
-        return await this.categoriaRepository.find();
+        return await this.categoriaRepository.find({
+            relations: {
+                encomendas: true
+            }
+        });
     }
 
 
@@ -24,6 +28,9 @@ export class CategoriaService {
         const categoria = await this.categoriaRepository.findOne({
             where: {
                 id
+            },
+            relations: {
+                encomendas: true
             }
         });
 
@@ -32,42 +39,42 @@ export class CategoriaService {
 
         return categoria;
 
-}
+    }
 
 
         async findAllByDescricao(descricao: string): Promise<Categoria[]>{
             return await this.categoriaRepository.find({
                 where: {
-                    descricao: ILike(`%${descricao}%`)
+                    descricao: ILike(`%${descricao}&`)
                 }
 
             })
         }
 
 
-        async create(categoria: Categoria): Promise<Categoria> {
-            return await this.categoriaRepository.save(categoria);
-        }
-
-        async update(categoria: Categoria): Promise<Categoria> {
-
-            await this.findById(categoria.id);
-
-            return await this.categoriaRepository.save(categoria);
-        }
-
-
-        async delete(id: number): Promise<DeleteResult> {
-
-            await this.findById(id)
-
-            return await this.categoriaRepository.delete(id)
-        }
-
-
-
-
+    async create(categoria: Categoria): Promise<Categoria> {
+        return await this.categoriaRepository.save(categoria);
     }
+
+    async update(categoria: Categoria): Promise<Categoria> {
+
+        await this.findById(categoria.id);
+
+        return await this.categoriaRepository.save(categoria);
+    }
+
+
+    async delete(id: number): Promise<DeleteResult> {
+
+        await this.findById(id)
+
+        return await this.categoriaRepository.delete(id)
+    }
+
+
+
+
+}
 
 
 
