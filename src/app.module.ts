@@ -8,8 +8,6 @@ import { CategoriaModule } from './categoria/categoria.module';
 import { Usuario } from './usuario/entities/usuario.entity';
 import { AuthModule } from './auth/auth.module';
 import { UsuarioModule } from './usuario/usuario.module';
-import { RecomendacaoController } from './recomendacao/controllers/recomendacao.controller';
-import { RecomendacaoService } from './recomendacao/services/recomendacao.service';
 import { RecomendacaoModule } from './recomendacao/recomendacao.module';
 import { AppController } from './app.controller';
 
