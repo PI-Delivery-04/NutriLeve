@@ -2,7 +2,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { IsNotEmpty } from "class-validator";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Categoria } from "../../categoria/entities/categoria.entity";
-import { ApiProperty } from "@nestjs/swagger";
+import { Usuario } from "../../usuario/entities/usuario.entity";
 
 @Entity({ name: 'tb_encomenda' })
 export class Encomenda {
