@@ -12,9 +12,9 @@ export class DevService implements TypeOrmOptionsFactory {
             type: 'mysql',
             host: 'localhost',
             port: 3306,
-            username: 'root',
-            password: 'root',
-            database: 'db_blogpessoal',
+            username: 'root@root.com',
+            password: 'rootroot',
+            database: 'db_nutrileve',
             entities: [Categoria, Encomenda, Usuario],
             synchronize: true,
     };
