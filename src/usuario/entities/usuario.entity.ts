@@ -36,6 +36,7 @@ export class Usuario {
     @ApiProperty()
     senha: string;
 
+    @ApiProperty()
     @OneToMany(() => Encomenda, (encomenda) => encomenda.usuario)
     encomendas: Encomenda[];
 }

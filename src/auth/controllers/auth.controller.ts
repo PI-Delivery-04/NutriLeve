@@ -13,9 +13,10 @@ export class AuthController {
 
     // Anotação que indica que usaremos uma classe de validação especial (Guard)
     // @UseGuards(LocalAuthGuard)
+    @UseGuards(LocalAuthGuard)
     @HttpCode(HttpStatus.OK)
     @Post('/logar')
-    login(@Body() usuario: UsuarioLogin): Promise<any> {
+    async login(@Body() usuario: UsuarioLogin): Promise<any> {
         return this.authService.login(usuario);
     }
 

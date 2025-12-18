@@ -20,6 +20,7 @@ export class Categoria {
     @ApiProperty()
     descricao: string;
 
+    @ApiProperty()
     @OneToMany(() => Encomenda, (encomenda) => encomenda.categoria)
     encomendas: Encomenda[];
 }
