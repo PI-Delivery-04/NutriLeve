@@ -11,10 +11,7 @@ import { UsuarioModule } from './usuario/usuario.module';
 import { RecomendacaoModule } from './recomendacao/recomendacao.module';
 import { AppController } from './app.controller';
 import { ProdService } from './data/services/prod.service';
-<<<<<<< HEAD
 import { DevService } from './data/services/dev.service';
-=======
->>>>>>> f135ca20054d59a126caf212d10e00c420076829
 
 @Module({
   // imports: [

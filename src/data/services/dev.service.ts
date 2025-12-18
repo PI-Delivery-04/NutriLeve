@@ -13,11 +13,7 @@ export class DevService implements TypeOrmOptionsFactory {
       host: 'localhost',
       port: 3306,
       username: 'root',
-<<<<<<< HEAD
       password: 'root',
-=======
-      password: 'r$4abWKj#456',
->>>>>>> f135ca20054d59a126caf212d10e00c420076829
       database: 'db_nutrileve',
       entities: [Categoria, Encomenda, Usuario],
       synchronize: true,
