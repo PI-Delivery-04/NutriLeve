@@ -7,16 +7,16 @@ import { Encomenda } from "../../encomenda/entities/encomenda.entity";
 @Injectable()
 export class DevService implements TypeOrmOptionsFactory {
 
-    createTypeOrmOptions(): TypeOrmModuleOptions {
-        return {
-            type: 'mysql',
-            host: 'localhost',
-            port: 3306,
-            username: 'root',
-            password: 'root',
-            database: 'db_blogpessoal',
-            entities: [Categoria, Encomenda, Usuario],
-            synchronize: true,
+  createTypeOrmOptions(): TypeOrmModuleOptions {
+    return {
+      type: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      username: 'root',
+      password: 'r$4abWKj#456',
+      database: 'db_nutrileve',
+      entities: [Categoria, Encomenda, Usuario],
+      synchronize: true,
     };
   }
 }
