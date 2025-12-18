@@ -10,21 +10,29 @@ import { AuthModule } from './auth/auth.module';
 import { UsuarioModule } from './usuario/usuario.module';
 import { RecomendacaoModule } from './recomendacao/recomendacao.module';
 import { AppController } from './app.controller';
+import { ProdService } from './data/services/prod.service';
+import { DevService } from './data/services/dev.service';
 
 @Module({
+  // imports: [
+  //   ConfigModule.forRoot({
+  //     isGlobal: true,
+  //   }),
+  //   TypeOrmModule.forRoot({
+  //     type: 'mysql',
+  //     host: process.env.DB_HOST,
+  //     port: 3306,
+  //     username: process.env.DB_USERNAME,
+  //     password: process.env.DB_PASSWORD,
+  //     database: process.env.DB_NAME,
+  //     entities: [Encomenda, Categoria, Usuario],
+  //     synchronize: true,
+  //   }),
   imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-    }),
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: process.env.DB_HOST,
-      port: 3306,
-      username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
-      entities: [Encomenda, Categoria, Usuario],
-      synchronize: true,
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRootAsync({
+      useClass: DevService,
+      imports: [ConfigModule],
     }),
     EncomendaModule, CategoriaModule, AuthModule, UsuarioModule, RecomendacaoModule
   ],
