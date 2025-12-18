@@ -11,6 +11,7 @@ import { UsuarioModule } from './usuario/usuario.module';
 import { RecomendacaoController } from './recomendacao/controllers/recomendacao.controller';
 import { RecomendacaoService } from './recomendacao/services/recomendacao.service';
 import { RecomendacaoModule } from './recomendacao/recomendacao.module';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -29,7 +30,7 @@ import { RecomendacaoModule } from './recomendacao/recomendacao.module';
     }),
     EncomendaModule, CategoriaModule, AuthModule, UsuarioModule, RecomendacaoModule
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [],
 })
 export class AppModule { }

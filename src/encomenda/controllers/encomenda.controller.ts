@@ -3,10 +3,12 @@ import { EncomendaService } from "../services/encomenda.service";
 import { Encomenda } from "../entities/encomenda.entity";
 import { DeleteResult } from "typeorm";
 import { JwtAuthGuard } from "../../auth/guards/jwt-auth.guard";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
-
- @UseGuards(JwtAuthGuard)
- @Controller('/encomendas')
+@ApiTags('Encomenda')
+@UseGuards(JwtAuthGuard)
+@Controller('/encomendas')
+@ApiBearerAuth()
 export class EncomendaController {
     constructor(private readonly encomendaService: EncomendaService) { }
 
