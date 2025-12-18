@@ -57,9 +57,9 @@ export class EncomendaService {
     }
 
     async create(encomenda: Encomenda): Promise<Encomenda> {
-        await this.findById(encomenda.id);
-        await this.categoriaService.findById(encomenda.categoria.id);
-        await this.usuarioService.findById(encomenda.usuario.id);
+        // await this.findById(encomenda.id);
+        //await this.categoriaService.findById(encomenda.categoria.id);
+        // await this.usuarioService.findById(encomenda.usuario.id);
 
         return await this.encomendaRepository.save(encomenda);
     }
