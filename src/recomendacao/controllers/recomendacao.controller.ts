@@ -2,7 +2,7 @@ import { Controller, Get, HttpCode, HttpStatus } from "@nestjs/common";
 import { RecomendacaoService } from "../services/recomendacao.service";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
-@ApiTags('Usuario')
+@ApiTags('Recomendação')
 @Controller("/recomendacao") // Prefixo para rotas de análise/estatística
 @ApiBearerAuth()
 export class RecomendacaoController {
