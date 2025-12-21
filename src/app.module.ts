@@ -29,7 +29,7 @@ import { DevService } from './data/services/dev.service';
   //     synchronize: true,
   //   }),
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRootAsync({
       useClass: ProdService,
       imports: [ConfigModule],

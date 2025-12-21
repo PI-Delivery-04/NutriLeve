@@ -57,9 +57,7 @@ export class EncomendaService {
     }
 
     async create(encomenda: Encomenda): Promise<Encomenda> {
-        // await this.findById(encomenda.id);
-        //await this.categoriaService.findById(encomenda.categoria.id);
-        // await this.usuarioService.findById(encomenda.usuario.id);
+        await this.categoriaService.findById(encomenda.categoria.id);
 
         return await this.encomendaRepository.save(encomenda);
     }
@@ -67,7 +65,7 @@ export class EncomendaService {
     async update(encomenda: Encomenda): Promise<Encomenda> {
         await this.findById(encomenda.id);
         await this.categoriaService.findById(encomenda.categoria.id);
-        await this.usuarioService.findById(encomenda.usuario.id);
+        // await this.usuarioService.findById(encomenda.usuario.id);
 
         return this.encomendaRepository.save(encomenda);
     }
