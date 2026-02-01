@@ -36,6 +36,22 @@ export class Encomenda {
     @ApiProperty()
     avaliacao: number;
 
+    @Column({ nullable: false })
+    @ApiProperty()
+    foto: string;
+
+    @Column({ type: 'decimal', precision: 6, scale: 2, default: 0 })
+    @ApiProperty()
+    proteina: number;
+
+    @Column({ type: 'decimal', precision: 6, scale: 2, default: 0 })
+    @ApiProperty()
+    carboidrato: number;
+
+    @Column({ type: 'decimal', precision: 6, scale: 2, default: 0 })
+    @ApiProperty()
+    gordura: number;
+
     @IsNotEmpty()
     @Column({ type: 'date', nullable: false })
     @ApiProperty()
