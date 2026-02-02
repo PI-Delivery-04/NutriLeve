@@ -72,25 +72,54 @@ export class UsuarioService {
     }
 
 
-    async update(usuario: Usuario): Promise<Usuario> {
-        let usuarioUpdate: Usuario = await this.findById(usuario.id)
-        let usuarioBusca = await this.findByUsuario(usuario.usuario)
+async update(usuario: Usuario): Promise<Usuario> {
+  const usuarioUpdate = await this.findById(usuario.id);
 
-        if (!usuarioUpdate)
-            throw new HttpException('Usuário não encontrado!', HttpStatus.NOT_FOUND);
+  const usuarioBusca = await this.findByUsuario(usuario.usuario);
+  if (usuarioBusca && usuarioBusca.id !== usuario.id) {
+    throw new HttpException(
+      'Usuário (e-mail) já cadastrado!',
+      HttpStatus.BAD_REQUEST
+    );
+  }
 
-        if (usuarioBusca && usuarioBusca.id !== usuario.id)
-            throw new HttpException('Usuário (e-mail) já Cadastrado, digite outro!', HttpStatus.BAD_REQUEST);
+  usuario.senha = usuarioUpdate.senha;
 
-        usuario.senha = await this.bcrypt.criptografarSenha(usuario.senha)
+  return this.usuarioRepository.save({
+    ...usuarioUpdate,
+    ...usuario,
+  });
+}
 
-        return await this.usuarioRepository.save(usuario);
-    }
+
+async updateSenha(
+  id: number,
+  senhaAtual: string,
+  novaSenha: string
+) {
+  const usuario = await this.findById(id);
+
+  const senhaOk = await this.bcrypt.compararSenhas(
+    usuario.senha,
+    senhaAtual
+  );
+
+  if (!senhaOk) {
+    throw new HttpException('Senha atual inválida', HttpStatus.BAD_REQUEST);
+  }
+
+  usuario.senha = await this.bcrypt.criptografarSenha(novaSenha);
+  await this.usuarioRepository.save(usuario);
+
+  return { message: 'Senha alterada com sucesso' };
+}
 
     async delete(id: number): Promise<DeleteResult> {
         await this.findById(id)
 
         return await this.usuarioRepository.delete(id)
     }
+
+    
 
 }
